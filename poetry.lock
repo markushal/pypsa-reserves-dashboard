@@ -804,6 +804,16 @@ files = [
 gitdb = ">=4.0.1,<5"
 
 [[package]]
+name = "glpk"
+version = "0.4.7"
+description = "PyGLPK, a Python module encapsulating GLPK."
+optional = true
+python-versions = "*"
+files = [
+    {file = "glpk-0.4.7.tar.gz", hash = "sha256:89a658914b13ae4557b15de945943628c9fc165d46697881027dc39a3dbe9ec3"},
+]
+
+[[package]]
 name = "gurobipy"
 version = "10.0.2"
 description = "Python interface to Gurobi"
@@ -2845,4 +2855,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "7ffbedc9fb9196c059666f15e82e1b84bda973c26357178a778d51f3f7100c81"
+content-hash = "f9cdaabd766dde774f5d710dd9fb9508b4d8d6a6b0c8c9fabadfd2edd6c17729"

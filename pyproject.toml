@@ -7,11 +7,10 @@ readme = "README.md"
 # packages = [{include = "pypsa-reserves-dashboard"}]
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.11"
 pypsa = "^0.25.1"
 plotly = "^5.15.0"
 streamlit = "^1.25.0"
-gurobipy = "^10.0.2"
 highspy = "^1.5.3"
 
 

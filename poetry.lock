@@ -684,20 +684,6 @@ files = [
 tests = ["asttokens", "littleutils", "pytest", "rich"]
 
 [[package]]
-name = "fastjsonschema"
-version = "2.18.0"
-description = "Fastest Python implementation of JSON schema"
-optional = false
-python-versions = "*"
-files = [
-    {file = "fastjsonschema-2.18.0-py3-none-any.whl", hash = "sha256:128039912a11a807068a7c87d0da36660afbfd7202780db26c4aa7153cfdc799"},
-    {file = "fastjsonschema-2.18.0.tar.gz", hash = "sha256:e820349dd16f806e4bd1467a138dced9def4bc7d6213a34295272a6cac95b5bd"},
-]
-
-[package.extras]
-devel = ["colorama", "json-spec", "jsonschema", "pylint", "pytest", "pytest-benchmark", "pytest-cache", "validictory"]
-
-[[package]]
 name = "fonttools"
 version = "4.41.1"
 description = "Tools to manipulate font files"
@@ -816,38 +802,6 @@ files = [
 
 [package.dependencies]
 gitdb = ">=4.0.1,<5"
-
-[[package]]
-name = "gurobipy"
-version = "10.0.2"
-description = "Python interface to Gurobi"
-optional = false
-python-versions = "*"
-files = [
-    {file = "gurobipy-10.0.2-cp310-cp310-macosx_10_9_universal2.whl", hash = "sha256:52548136c511bc5c936a03b78bda814c8098eceb5eacaa0f779a7b3306834edd"},
-    {file = "gurobipy-10.0.2-cp310-cp310-manylinux2014_aarch64.whl", hash = "sha256:e20d69199311cb5193653734b478285d004e7e2461d055c9811039b2b7b6191a"},
-    {file = "gurobipy-10.0.2-cp310-cp310-manylinux2014_x86_64.whl", hash = "sha256:8c0fcb48001f6e0067c551831ba1fc293404e80304a9d42484e385751709af77"},
-    {file = "gurobipy-10.0.2-cp310-cp310-win_amd64.whl", hash = "sha256:bf06cc4e33e47bf670e9321f81afc045c1b83393939d921de5f6d4355edeebf4"},
-    {file = "gurobipy-10.0.2-cp311-cp311-macosx_10_9_universal2.whl", hash = "sha256:f4f6b33ce562e8b56283b5a5a7a5e2647c5e63eb38e9ba1226c30d6f4a34c571"},
-    {file = "gurobipy-10.0.2-cp311-cp311-manylinux2014_aarch64.whl", hash = "sha256:1d6517b91b5e338f5b46d6f9862308f0a11a12fab2a644a6f64f077c7d2b7cfc"},
-    {file = "gurobipy-10.0.2-cp311-cp311-manylinux2014_x86_64.whl", hash = "sha256:f4f5a700eadf7853f89c0c97ffd3c03711cbce5a61f26d32b7a77dccd96c147e"},
-    {file = "gurobipy-10.0.2-cp311-cp311-win_amd64.whl", hash = "sha256:375e18397e4766b0a705bfb4e3cfcdd5fe1207b18ad307668a81c3d82474d563"},
-    {file = "gurobipy-10.0.2-cp37-cp37m-macosx_10_9_x86_64.whl", hash = "sha256:75a33ecfbafe3cc820d30dc14337626ad6872d1fcd0b5bd4402a3865f1ce720b"},
-    {file = "gurobipy-10.0.2-cp37-cp37m-manylinux2014_aarch64.whl", hash = "sha256:78dcdb687e77316ab17d74b7802c17aa72bfe007bc44b9625856f06ebd394899"},
-    {file = "gurobipy-10.0.2-cp37-cp37m-manylinux2014_x86_64.whl", hash = "sha256:b6dcafe5888818bc53af325a525a587a00c7a8f6aad26e5fd31cc524b853c2d4"},
-    {file = "gurobipy-10.0.2-cp37-cp37m-win_amd64.whl", hash = "sha256:5ae84999b4a492282766a02d765c06c878a21a658e1b6f9af27fd5b384edfff9"},
-    {file = "gurobipy-10.0.2-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:6debb0df3824d2732937a46bd38b4568896be63a39f638283a7c1db566bb59a4"},
-    {file = "gurobipy-10.0.2-cp38-cp38-manylinux2014_aarch64.whl", hash = "sha256:6918f535700f6002902fa813b73f7b12a8956c6361d92ade05a1f5a0e49d0db1"},
-    {file = "gurobipy-10.0.2-cp38-cp38-manylinux2014_x86_64.whl", hash = "sha256:860c06c8a8ee96a02060e4696f8666945b101acdd9b0bd08d40f2870a826fd3c"},
-    {file = "gurobipy-10.0.2-cp38-cp38-win_amd64.whl", hash = "sha256:9a545831b6b1759131cd71ec67877e39f7db8826e8f9253e7f3b493ee595fa3d"},
-    {file = "gurobipy-10.0.2-cp39-cp39-macosx_10_9_universal2.whl", hash = "sha256:e8bf3aea86a16786198b83f7a9812ce9bf1e2f105717e53d8ce5b4129a39b8f3"},
-    {file = "gurobipy-10.0.2-cp39-cp39-manylinux2014_aarch64.whl", hash = "sha256:ad21e13edd11bc4a86bdc564fe10779c60aac648f6f2c41171a477bbd925341a"},
-    {file = "gurobipy-10.0.2-cp39-cp39-manylinux2014_x86_64.whl", hash = "sha256:f805393623ddb532eff7d9ea612a7ddf9d9667611bce6c013d7ebc72e4778a7e"},
-    {file = "gurobipy-10.0.2-cp39-cp39-win_amd64.whl", hash = "sha256:bed2bc14b0a4195da2d967e932b12766128de4c70069d3d44408c4fd7d46e7ad"},
-]
-
-[package.extras]
-matrixapi = ["numpy", "scipy"]
 
 [[package]]
 name = "idna"
@@ -1418,27 +1372,6 @@ files = [
     {file = "msgpack-1.0.5-cp39-cp39-win_amd64.whl", hash = "sha256:06f5174b5f8ed0ed919da0e62cbd4ffde676a374aba4020034da05fab67b9164"},
     {file = "msgpack-1.0.5.tar.gz", hash = "sha256:c075544284eadc5cddc70f4757331d99dcbc16b2bbd4849d15f8aae4cf36d31c"},
 ]
-
-[[package]]
-name = "nbformat"
-version = "5.9.2"
-description = "The Jupyter Notebook format"
-optional = false
-python-versions = ">=3.8"
-files = [
-    {file = "nbformat-5.9.2-py3-none-any.whl", hash = "sha256:1c5172d786a41b82bcfd0c23f9e6b6f072e8fb49c39250219e4acfff1efe89e9"},
-    {file = "nbformat-5.9.2.tar.gz", hash = "sha256:5f98b5ba1997dff175e77e0c17d5c10a96eaed2cbd1de3533d1fc35d5e111192"},
-]
-
-[package.dependencies]
-fastjsonschema = "*"
-jsonschema = ">=2.6"
-jupyter-core = "*"
-traitlets = ">=5.1"
-
-[package.extras]
-docs = ["myst-parser", "pydata-sphinx-theme", "sphinx", "sphinxcontrib-github-alt", "sphinxcontrib-spelling"]
-test = ["pep440", "pre-commit", "pytest", "testpath"]
 
 [[package]]
 name = "nest-asyncio"
@@ -2880,4 +2813,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "5e6c10524d1419f5c6ebd83141ad8e3e5ce8c694f5cf713573201585aaa3d9aa"
+content-hash = "dfb5d217b0ae54ecebd6b35744198a47c3d8db98050506577362ddddd767e39f"

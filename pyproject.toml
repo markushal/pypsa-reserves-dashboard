@@ -12,7 +12,7 @@ pypsa = "^0.25.1"
 plotly = "^5.15.0"
 streamlit = "^1.25.0"
 gurobipy = "^10.0.2"
-glpk = {version = "^0.4.7", platform = "linux"}
+highspy = "^1.5.3"
 
 
 [tool.poetry.group.dev.dependencies]

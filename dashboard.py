@@ -19,7 +19,8 @@ n = db.create_network(settings)
 db.add_balancing_constraints(n, settings["contingency"])
 
 # solve model:
-n.optimize.solve_model(assign_all_duals=True)
+n.optimize.solve_model(solver="highs", assign_all_duals=True)
+
 
 res = db.concat_results(n)
 

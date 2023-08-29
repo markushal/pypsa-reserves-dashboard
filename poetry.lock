@@ -804,6 +804,38 @@ files = [
 gitdb = ">=4.0.1,<5"
 
 [[package]]
+name = "gurobipy"
+version = "10.0.2"
+description = "Python interface to Gurobi"
+optional = false
+python-versions = "*"
+files = [
+    {file = "gurobipy-10.0.2-cp310-cp310-macosx_10_9_universal2.whl", hash = "sha256:52548136c511bc5c936a03b78bda814c8098eceb5eacaa0f779a7b3306834edd"},
+    {file = "gurobipy-10.0.2-cp310-cp310-manylinux2014_aarch64.whl", hash = "sha256:e20d69199311cb5193653734b478285d004e7e2461d055c9811039b2b7b6191a"},
+    {file = "gurobipy-10.0.2-cp310-cp310-manylinux2014_x86_64.whl", hash = "sha256:8c0fcb48001f6e0067c551831ba1fc293404e80304a9d42484e385751709af77"},
+    {file = "gurobipy-10.0.2-cp310-cp310-win_amd64.whl", hash = "sha256:bf06cc4e33e47bf670e9321f81afc045c1b83393939d921de5f6d4355edeebf4"},
+    {file = "gurobipy-10.0.2-cp311-cp311-macosx_10_9_universal2.whl", hash = "sha256:f4f6b33ce562e8b56283b5a5a7a5e2647c5e63eb38e9ba1226c30d6f4a34c571"},
+    {file = "gurobipy-10.0.2-cp311-cp311-manylinux2014_aarch64.whl", hash = "sha256:1d6517b91b5e338f5b46d6f9862308f0a11a12fab2a644a6f64f077c7d2b7cfc"},
+    {file = "gurobipy-10.0.2-cp311-cp311-manylinux2014_x86_64.whl", hash = "sha256:f4f5a700eadf7853f89c0c97ffd3c03711cbce5a61f26d32b7a77dccd96c147e"},
+    {file = "gurobipy-10.0.2-cp311-cp311-win_amd64.whl", hash = "sha256:375e18397e4766b0a705bfb4e3cfcdd5fe1207b18ad307668a81c3d82474d563"},
+    {file = "gurobipy-10.0.2-cp37-cp37m-macosx_10_9_x86_64.whl", hash = "sha256:75a33ecfbafe3cc820d30dc14337626ad6872d1fcd0b5bd4402a3865f1ce720b"},
+    {file = "gurobipy-10.0.2-cp37-cp37m-manylinux2014_aarch64.whl", hash = "sha256:78dcdb687e77316ab17d74b7802c17aa72bfe007bc44b9625856f06ebd394899"},
+    {file = "gurobipy-10.0.2-cp37-cp37m-manylinux2014_x86_64.whl", hash = "sha256:b6dcafe5888818bc53af325a525a587a00c7a8f6aad26e5fd31cc524b853c2d4"},
+    {file = "gurobipy-10.0.2-cp37-cp37m-win_amd64.whl", hash = "sha256:5ae84999b4a492282766a02d765c06c878a21a658e1b6f9af27fd5b384edfff9"},
+    {file = "gurobipy-10.0.2-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:6debb0df3824d2732937a46bd38b4568896be63a39f638283a7c1db566bb59a4"},
+    {file = "gurobipy-10.0.2-cp38-cp38-manylinux2014_aarch64.whl", hash = "sha256:6918f535700f6002902fa813b73f7b12a8956c6361d92ade05a1f5a0e49d0db1"},
+    {file = "gurobipy-10.0.2-cp38-cp38-manylinux2014_x86_64.whl", hash = "sha256:860c06c8a8ee96a02060e4696f8666945b101acdd9b0bd08d40f2870a826fd3c"},
+    {file = "gurobipy-10.0.2-cp38-cp38-win_amd64.whl", hash = "sha256:9a545831b6b1759131cd71ec67877e39f7db8826e8f9253e7f3b493ee595fa3d"},
+    {file = "gurobipy-10.0.2-cp39-cp39-macosx_10_9_universal2.whl", hash = "sha256:e8bf3aea86a16786198b83f7a9812ce9bf1e2f105717e53d8ce5b4129a39b8f3"},
+    {file = "gurobipy-10.0.2-cp39-cp39-manylinux2014_aarch64.whl", hash = "sha256:ad21e13edd11bc4a86bdc564fe10779c60aac648f6f2c41171a477bbd925341a"},
+    {file = "gurobipy-10.0.2-cp39-cp39-manylinux2014_x86_64.whl", hash = "sha256:f805393623ddb532eff7d9ea612a7ddf9d9667611bce6c013d7ebc72e4778a7e"},
+    {file = "gurobipy-10.0.2-cp39-cp39-win_amd64.whl", hash = "sha256:bed2bc14b0a4195da2d967e932b12766128de4c70069d3d44408c4fd7d46e7ad"},
+]
+
+[package.extras]
+matrixapi = ["numpy", "scipy"]
+
+[[package]]
 name = "idna"
 version = "3.4"
 description = "Internationalized Domain Names in Applications (IDNA)"
@@ -2813,4 +2845,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "dfb5d217b0ae54ecebd6b35744198a47c3d8db98050506577362ddddd767e39f"
+content-hash = "7ffbedc9fb9196c059666f15e82e1b84bda973c26357178a778d51f3f7100c81"

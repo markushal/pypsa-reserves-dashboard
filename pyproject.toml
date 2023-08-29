@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "pypsa-reserves-dashboard"
+version = "0.1.0"
+description = ""
+authors = ["Markus Haller <m.haller@oeko.de>"]
+readme = "README.md"
+packages = [{include = "pypsa-reserves-dashboard"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pypsa = "^0.25.1"
+plotly = "^5.15.0"
+nbformat = "^5.9.0"
+gurobipy = "^10.0.2"
+streamlit = "^1.25.0"
+
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.23.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

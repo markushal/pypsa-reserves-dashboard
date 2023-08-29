@@ -111,7 +111,7 @@ def create_network(settings):
         capital_cost=settings["storage_capcost"],
         p_nom_extendable=settings["storage_is_extendable"],
         cyclic_state_of_charge=True,
-        max_hours=4800,  # float(storage_capacity) / settings["p_nom_storage"] if settings["p_nom_storage"] > 0 else 1,
+        max_hours=24,  # float(storage_capacity) / settings["p_nom_storage"] if settings["p_nom_storage"] > 0 else 1,
         efficiency_store=0.99,
         standing_loss=0.001,
     )

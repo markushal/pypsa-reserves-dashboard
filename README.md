@@ -1,3 +1,3 @@
-# IND-E balancing power
+# PyPSA dashboard for reserve modeling
 
-Example pyPSA model for implementing balancing power
+Streamlit UI for a simple pypsa toy model that demonstrates how to model spinning reserves. 

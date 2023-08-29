@@ -76,7 +76,10 @@ def create_network(settings):
 
     # create snapshots:
     n.set_snapshots(snapshots)
-    n.snapshot_weightings["generators"] = 8760 / len(n.snapshots)
+    # effect of weightings unclear -> leave them as they are
+    # n.snapshot_weightings["objective"] = 8760 / len(n.snapshots)
+    # n.snapshot_weightings["stores"] = 8760 / len(n.snapshots)
+    # n.snapshot_weightings["generators"] = 8760 / len(n.snapshots)
     n.add("Load", name="load1", bus="bus1", carrier="Electricity", p_set=load_profile)
 
     # add dispatchable generators:

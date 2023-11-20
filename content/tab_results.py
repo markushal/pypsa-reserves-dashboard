@@ -1,9 +1,9 @@
 import streamlit as st
-from content.functions import create_figure_gen_profiles
-from content.functions import create_figure_capacity_and_average_output
-from content.functions import create_figure_gen_profiles_details
-from content.functions import create_figures_storage_details
-from content.functions import create_figure_prices
+from content.functions_figures import create_figure_gen_profiles
+from content.functions_figures import create_figure_capacity_and_average_output
+from content.functions_figures import create_figure_gen_profiles_details
+from content.functions_figures import create_figures_storage_details
+from content.functions_figures import create_figure_prices
 
 
 def create_tab_results(n, res):

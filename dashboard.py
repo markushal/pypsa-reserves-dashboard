@@ -6,11 +6,12 @@ from PIL import Image
 
 # app layout:
 st.set_page_config(layout="wide")
-st.title("PyPSA toy model")
-tab1, tab2 = st.tabs(["Results", "Help"])
+st.title("PyPSA reserves dashboard")
+t_results, t_about, t_methodology = st.tabs(["Results", "About", "Methodology"])
 
 # create sidebar:
 settings = db.create_sidebar()
+
 
 # create network:
 n = db.create_network(settings)
@@ -25,7 +26,7 @@ n.optimize.solve_model(solver_name="highs", assign_all_duals=True)
 res = db.concat_results(n)
 
 # create results tab:
-with tab1:
+with t_results:
     col1, col2 = st.columns(2)
 
     # Create a figure based on the dataframe
@@ -60,7 +61,7 @@ with tab1:
         st.code(n.model.constraints["StorageUnit-r-upper2"])
 
 # create help tab:
-with tab2:
+with t_methodology:
     st.write(
         r"""
         ### Methodology:

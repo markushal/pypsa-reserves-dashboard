@@ -1,8 +1,8 @@
 import streamlit as st
-import pandas as pd
-import plotly.express as px
 import dashboard_functions as db
 from PIL import Image
+
+from content.sidebar import create_sidebar
 
 # app layout:
 st.set_page_config(layout="wide")
@@ -10,7 +10,7 @@ st.title("PyPSA reserves dashboard")
 t_results, t_about, t_methodology = st.tabs(["Results", "About", "Methodology"])
 
 # create sidebar:
-settings = db.create_sidebar()
+settings = create_sidebar()
 
 
 # create network:

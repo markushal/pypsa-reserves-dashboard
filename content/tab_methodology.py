@@ -31,7 +31,7 @@ def create_tab_methodology():
         """
     )
 
-    image = Image.open("diagram.png")
+    image = Image.open("static/diagram.png")
     st.image(image)
 
     st.write(

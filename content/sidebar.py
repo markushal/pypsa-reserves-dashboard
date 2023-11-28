@@ -23,7 +23,7 @@ def create_sidebar():
     c1, c2 = st.sidebar.columns(2)
 
     with c2:
-        st.session_state["vres_is_extendable"] = st.checkbox("VRES extendable", False)
+        st.session_state["vres_is_extendable"] = st.toggle("VRES extendable", False)
     with c1:
         if st.session_state["vres_is_extendable"]:
             st.session_state["vres_capcost"] = st.slider(
@@ -38,7 +38,7 @@ def create_sidebar():
     c1, c2 = st.sidebar.columns(2)
 
     with c2:
-        st.session_state["storage_is_extendable"] = st.checkbox(
+        st.session_state["storage_is_extendable"] = st.toggle(
             "Storage extendable", False
         )
     with c1:

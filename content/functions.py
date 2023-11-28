@@ -4,7 +4,7 @@ import numpy as np
 import streamlit as st
 
 
-def create_network():
+def create_network() -> pypsa.Network:
     n = pypsa.Network()
 
     n.add("Bus", name="bus1")
@@ -146,7 +146,7 @@ def add_balancing_constraints(
     return
 
 
-def concat_results(n):
+def concat_results(n: pypsa.Network) -> pd.DataFrame:
     p_max = n.generators_t["p"].copy()
     for c in p_max.columns:
         if c in n.generators_t["p_max_pu"].columns:

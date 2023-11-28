@@ -1,4 +1,6 @@
 import streamlit as st
+import pypsa
+import pandas as pd
 from content.functions_figures import create_figure_gen_profiles
 from content.functions_figures import create_figure_capacity_and_average_output
 from content.functions_figures import create_figure_gen_profiles_details
@@ -6,7 +8,7 @@ from content.functions_figures import create_figures_storage_details
 from content.functions_figures import create_figure_prices
 
 
-def create_tab_results(n, res):
+def create_tab_results(n: pypsa.Network, res: pd.DataFrame):
     col1, col2 = st.columns(2)
 
     # Create a figure based on the dataframe

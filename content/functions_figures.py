@@ -1,9 +1,10 @@
 import plotly.express as px
 import streamlit as st
 import pandas as pd
+import pypsa
 
 
-def create_figure_gen_profiles(n, res):
+def create_figure_gen_profiles(n: pypsa.Network, res: pd.DataFrame):
     st.markdown("**Generation (``p``) and balancing (`r`) profiles**")
 
     fig = px.bar(
@@ -28,7 +29,7 @@ def create_figure_gen_profiles(n, res):
     return
 
 
-def create_figure_capacity_and_average_output(n):
+def create_figure_capacity_and_average_output(n: pypsa.Network):
     st.markdown("**Installed capacity and average output**")
     res2 = n.generators[["p_nom", "p_nom_opt"]].copy()
     res2["p (average)"] = n.generators_t["p"].mean()
@@ -40,7 +41,7 @@ def create_figure_capacity_and_average_output(n):
     return
 
 
-def create_figure_gen_profiles_details(res):
+def create_figure_gen_profiles_details(res: pd.DataFrame):
     st.markdown("**Generation and balancing profiles per generator**")
     fig = px.bar(
         res[(res["parameter"].isin(["p", "r"]))],
@@ -78,7 +79,7 @@ def create_figure_gen_profiles_details(res):
     return
 
 
-def create_figures_storage_details(n):
+def create_figures_storage_details(n: pypsa.Network):
     res_storage = pd.concat(
         [
             n.storage_units_t["state_of_charge"],
@@ -94,7 +95,7 @@ def create_figures_storage_details(n):
     return
 
 
-def create_figure_prices(n):
+def create_figure_prices(n: pypsa.Network):
     res_duals = pd.DataFrame(index=n.snapshots)
     res_duals["p"] = n.model.dual["Bus-nodal_balance"]
     res_duals["r"] = n.model.dual["reserve_margin"]

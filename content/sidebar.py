@@ -69,10 +69,13 @@ def create_sidebar():
 
     # create color mapping:
     st.session_state["colormap"] = {
-        "VRES": "#29b09d",
+        "VRES": "#68c900",
         "Dispatchable 1": "#0068c9",
-        "Dispatchable 2": "#3386d4",
-        "Dispatchable 3": "#66a4df",
-        "Dispatchable 4": "#99c3e9",
-        "Storage": "#ff2b2b",
+        "Dispatchable 2": "#4d95d9",
+        "Dispatchable 3": "#99c3e9",
+        "Dispatchable 4": "#e6f0fa",
+        "Storage": "#c90068",
+        "p_nom_opt": "#0068c9",
+        "p (average)": "#99c3e9",
+        "r (average)": "#c90068",
     }

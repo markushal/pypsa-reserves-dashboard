@@ -5,11 +5,12 @@ import pypsa
 
 
 def create_figure_gen_profiles(n: pypsa.Network, res: pd.DataFrame):
+    res2 = res.loc[res["MW"] != 0]
     if st.session_state["contingency"] > 0:
-        res2 = res[res["parameter"].isin(["p", "r"])]
+        res2 = res2[res2["parameter"].isin(["p", "r"])]
         st.markdown("**Generation (``p``) and balancing (`r`) profiles**")
     else:
-        res2 = res[res["parameter"] == "p"]
+        res2 = res2[res2["parameter"] == "p"]
         st.markdown("**Generation profile**")
     fig = px.bar(
         res2,
@@ -50,7 +51,13 @@ def create_figure_capacity_and_average_output(n: pypsa.Network):
     res2["p (average)"] = n.generators_t["p"].mean()
     res2["r (average)"] = n.generators_t["r"].mean()
     res2 = res2.drop("p_nom", axis=1)
-    fig = px.bar(res2, barmode="group", height=350)
+
+    fig = px.bar(
+        res2,
+        barmode="group",
+        height=350,
+        color_discrete_map=st.session_state["colormap"],
+    )
     fig.update_yaxes(title_text="MW")
     st.plotly_chart(fig, use_container_width=True)
     return

@@ -1,17 +1,25 @@
 import plotly.express as px
 import streamlit as st
 import pandas as pd
+import pypsa
 
 
-def create_figure_gen_profiles(n, res):
-    st.write("Generation (``p``) and balancing (`r`) profiles:")
-
+def create_figure_gen_profiles(n: pypsa.Network, res: pd.DataFrame):
+    res2 = res.loc[res["MW"] != 0]
+    if st.session_state["contingency"] > 0:
+        res2 = res2[res2["parameter"].isin(["p", "r"])]
+        st.markdown("**Generation (``p``) and balancing (`r`) profiles**")
+    else:
+        res2 = res2[res2["parameter"] == "p"]
+        st.markdown("**Generation profile**")
     fig = px.bar(
-        res[res["parameter"].isin(["p", "r"])],
+        res2,
         x="snapshot",
         facet_col="parameter",
         color="Generator",
         y="MW",
+        category_orders=st.session_state["category_orders"],
+        color_discrete_map=st.session_state["colormap"],
     )
 
     # add line for total load:
@@ -28,20 +36,26 @@ def create_figure_gen_profiles(n, res):
     return
 
 
-def create_figure_capacity_and_average_output(n):
-    st.write("Installed capacity and average output:")
+def create_figure_capacity_and_average_output(n: pypsa.Network):
+    st.markdown("**Installed capacity and average output**")
     res2 = n.generators[["p_nom", "p_nom_opt"]].copy()
     res2["p (average)"] = n.generators_t["p"].mean()
     res2["r (average)"] = n.generators_t["r"].mean()
     res2 = res2.drop("p_nom", axis=1)
-    fig = px.bar(res2, barmode="group", height=350)
+
+    fig = px.bar(
+        res2,
+        barmode="group",
+        height=350,
+        color_discrete_map=st.session_state["colormap"],
+    )
     fig.update_yaxes(title_text="MW")
     st.plotly_chart(fig, use_container_width=True)
     return
 
 
-def create_figure_gen_profiles_details(res):
-    st.write("Generation and balancing profiles per generator:")
+def create_figure_gen_profiles_details(res: pd.DataFrame):
+    st.markdown("**Generation and balancing profiles per generator**")
     fig = px.bar(
         res[(res["parameter"].isin(["p", "r"]))],
         x="snapshot",
@@ -50,6 +64,10 @@ def create_figure_gen_profiles_details(res):
         y="MW",
         height=700,
     )
+
+    # Customize the facet row labels after creating the plot
+    for i, row_label in enumerate(fig.layout.annotations):
+        row_label.text = row_label.text.split("=")[1]
 
     # Create a list to store line plot traces
     line_traces = []
@@ -78,7 +96,7 @@ def create_figure_gen_profiles_details(res):
     return
 
 
-def create_figures_storage_details(n):
+def create_figures_storage_details(n: pypsa.Network):
     res_storage = pd.concat(
         [
             n.storage_units_t["state_of_charge"],
@@ -94,7 +112,7 @@ def create_figures_storage_details(n):
     return
 
 
-def create_figure_prices(n):
+def create_figure_prices(n: pypsa.Network):
     res_duals = pd.DataFrame(index=n.snapshots)
     res_duals["p"] = n.model.dual["Bus-nodal_balance"]
     res_duals["r"] = n.model.dual["reserve_margin"]

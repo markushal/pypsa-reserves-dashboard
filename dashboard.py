@@ -15,14 +15,13 @@ st.title("PyPSA reserves dashboard")
 t_results, t_about, t_methodology = st.tabs(["Results", "About", "Methodology"])
 
 # create sidebar:
-settings = create_sidebar()
-
+create_sidebar()
 
 # create network:
-n = create_network(settings)
+n = create_network()
 
 # add balancing constraints:
-add_balancing_constraints(n, settings["contingency"])
+add_balancing_constraints(n, st.session_state["contingency"])
 
 # solve model:
 n.optimize.solve_model(solver_name="highs", assign_all_duals=True)

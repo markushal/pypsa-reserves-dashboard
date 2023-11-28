@@ -4,7 +4,7 @@ import pandas as pd
 
 
 def create_figure_gen_profiles(n, res):
-    st.write("Generation (``p``) and balancing (`r`) profiles:")
+    st.markdown("**Generation (``p``) and balancing (`r`) profiles**")
 
     fig = px.bar(
         res[res["parameter"].isin(["p", "r"])],
@@ -29,7 +29,7 @@ def create_figure_gen_profiles(n, res):
 
 
 def create_figure_capacity_and_average_output(n):
-    st.write("Installed capacity and average output:")
+    st.markdown("**Installed capacity and average output**")
     res2 = n.generators[["p_nom", "p_nom_opt"]].copy()
     res2["p (average)"] = n.generators_t["p"].mean()
     res2["r (average)"] = n.generators_t["r"].mean()
@@ -41,7 +41,7 @@ def create_figure_capacity_and_average_output(n):
 
 
 def create_figure_gen_profiles_details(res):
-    st.write("Generation and balancing profiles per generator:")
+    st.markdown("**Generation and balancing profiles per generator**")
     fig = px.bar(
         res[(res["parameter"].isin(["p", "r"]))],
         x="snapshot",

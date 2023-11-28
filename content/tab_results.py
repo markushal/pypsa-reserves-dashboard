@@ -18,7 +18,7 @@ def create_tab_results(n, res):
         create_figure_gen_profiles_details(res)
 
     # table with aggregate statistics:
-    st.write("Aggregate statistics:")
+    st.markdown("**Aggregate statistics**")
     st.dataframe(n.statistics().style.format("{:.2f}"))
 
     # storage details profiles:

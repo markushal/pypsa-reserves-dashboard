@@ -17,6 +17,17 @@ def create_figure_gen_profiles(n: pypsa.Network, res: pd.DataFrame):
         facet_col="parameter",
         color="Generator",
         y="MW",
+        category_orders={
+            "Generator": [
+                "VRES",
+                "Dispatchable 1",
+                "Dispatchable 2",
+                "Dispatchable 3",
+                "Dispatchable 4",
+                "Storage",
+            ]
+        },
+        color_discrete_map=st.session_state["colormap"],
     )
 
     # add line for total load:

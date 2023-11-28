@@ -11,7 +11,15 @@ def create_sidebar():
         "p_nom_extendable": [False, False, False, True],
         "capital_cost": [60, 50, 40, 30],
     }
-    df = pd.DataFrame(data, index=["1_fix", "2_fix", "3_fix", "4_ext"])
+    df = pd.DataFrame(
+        data,
+        index=[
+            "Dispatchable 1",
+            "Dispatchable 2",
+            "Dispatchable 3",
+            "Dispatchable 4",
+        ],
+    )
 
     st.sidebar.header("Settings:")
     st.sidebar.subheader("Dispatchable generators:")
@@ -57,4 +65,14 @@ def create_sidebar():
     st.session_state["load_max"] = st.sidebar.slider("Peak load (MW):", 1, 60, 30)
     st.session_state["contingency"] = st.sidebar.slider(
         "reserve requirement (MW):", 0, int(0.5 * st.session_state["load_max"]), 0
+
+    # create color mapping:
+    st.session_state["colormap"] = {
+        "VRES": "#29b09d",
+        "Dispatchable 1": "#0068c9",
+        "Dispatchable 2": "#3386d4",
+        "Dispatchable 3": "#66a4df",
+        "Dispatchable 4": "#99c3e9",
+        "Storage": "#ff2b2b",
+    }
     )

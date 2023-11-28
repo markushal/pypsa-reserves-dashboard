@@ -17,7 +17,6 @@ t_results, t_about, t_methodology = st.tabs(["Results", "About", "Methodology"])
 # create sidebar:
 create_sidebar()
 
-
 # create network:
 n = create_network()
 

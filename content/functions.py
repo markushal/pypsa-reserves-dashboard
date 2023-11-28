@@ -35,7 +35,7 @@ def create_network() -> pypsa.Network:
     n.add(
         "Generator",
         bus="bus1",
-        name="5_vres",
+        name="VRES",
         carrier="VRE",
         p_nom=st.session_state["p_nom_vres"],
         p_max_pu=p_max_pu_vres,
@@ -46,7 +46,7 @@ def create_network() -> pypsa.Network:
     # add storage:
     n.add(
         "StorageUnit",
-        name="6_store",
+        name="Storage",
         bus="bus1",
         carrier="Electricity",
         p_nom=st.session_state["p_nom_storage"],

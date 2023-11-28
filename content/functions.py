@@ -1,9 +1,10 @@
 import pypsa
 import pandas as pd
 import numpy as np
+import streamlit as st
 
 
-def create_network(settings):
+def create_network():
     n = pypsa.Network()
 
     n.add("Bus", name="bus1")
@@ -14,7 +15,7 @@ def create_network(settings):
     # create load:
     snapshots = np.linspace(1, 48, 48)
     load_profile = np.sin(snapshots / 12 * np.pi) + 3.5
-    load_profile = load_profile / load_profile.max() * settings["load_max"]
+    load_profile = load_profile / load_profile.max() * st.session_state["load_max"]
 
     # create snapshots:
     n.set_snapshots(snapshots)
@@ -26,7 +27,7 @@ def create_network(settings):
 
     # add dispatchable generators:
     n.import_components_from_dataframe(
-        settings["df_dispatchable_generators"], "Generator"
+        st.session_state["df_dispatchable_generators"], "Generator"
     )
 
     # add vres:
@@ -36,10 +37,10 @@ def create_network(settings):
         bus="bus1",
         name="5_vres",
         carrier="VRE",
-        p_nom=settings["p_nom_vres"],
+        p_nom=st.session_state["p_nom_vres"],
         p_max_pu=p_max_pu_vres,
-        p_nom_extendable=settings["vres_is_extendable"],
-        capital_cost=settings["vres_capcost"],
+        p_nom_extendable=st.session_state["vres_is_extendable"],
+        capital_cost=st.session_state["vres_capcost"],
     )
 
     # add storage:
@@ -48,11 +49,11 @@ def create_network(settings):
         name="6_store",
         bus="bus1",
         carrier="Electricity",
-        p_nom=settings["p_nom_storage"],
-        capital_cost=settings["storage_capcost"],
-        p_nom_extendable=settings["storage_is_extendable"],
+        p_nom=st.session_state["p_nom_storage"],
+        capital_cost=st.session_state["storage_capcost"],
+        p_nom_extendable=st.session_state["storage_is_extendable"],
         cyclic_state_of_charge=True,
-        max_hours=24,  # float(storage_capacity) / settings["p_nom_storage"] if settings["p_nom_storage"] > 0 else 1,
+        max_hours=24,  # float(storage_capacity) / st.session_state["p_nom_storage"] if st.session_state["p_nom_storage"] > 0 else 1,
         efficiency_store=0.99,
         standing_loss=0.001,
     )

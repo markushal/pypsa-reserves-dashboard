@@ -24,20 +24,20 @@ def create_tab_results(n: pypsa.Network, res: pd.DataFrame):
     st.dataframe(n.statistics().style.format("{:.2f}"))
 
     # storage details profiles:
-    exp_storage = st.expander("Storage details")
-    with exp_storage:
+    with st.expander("Storage details"):
         create_figures_storage_details(n)
 
     # prices profiles:
-    exp_prices = st.expander("Prices")
-    with exp_prices:
+    with st.expander("Prices"):
         create_figure_prices(n)
 
     st.divider()
-    exp_debugging_output = st.expander("Debugging output")
-    with exp_debugging_output:
+    with st.expander("Debugging output"):
+        st.markdown("Generators:")
         st.write(n.generators)
+
+        st.markdown("Storage units:")
         st.write(n.storage_units)
 
-        st.code(n.model.constraints["StorageUnit-r-upper"])
-        st.code(n.model.constraints["StorageUnit-r-upper2"])
+        st.markdown("Session state:")
+        st.write(st.session_state)

@@ -5,10 +5,14 @@ import pypsa
 
 
 def create_figure_gen_profiles(n: pypsa.Network, res: pd.DataFrame):
-    st.markdown("**Generation (``p``) and balancing (`r`) profiles**")
-
+    if st.session_state["contingency"] > 0:
+        res2 = res[res["parameter"].isin(["p", "r"])]
+        st.markdown("**Generation (``p``) and balancing (`r`) profiles**")
+    else:
+        res2 = res[res["parameter"] == "p"]
+        st.markdown("**Generation profile**")
     fig = px.bar(
-        res[res["parameter"].isin(["p", "r"])],
+        res2,
         x="snapshot",
         facet_col="parameter",
         color="Generator",

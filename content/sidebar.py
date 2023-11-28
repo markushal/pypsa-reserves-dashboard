@@ -65,6 +65,7 @@ def create_sidebar():
     st.session_state["load_max"] = st.sidebar.slider("Peak load (MW):", 1, 60, 30)
     st.session_state["contingency"] = st.sidebar.slider(
         "reserve requirement (MW):", 0, int(0.5 * st.session_state["load_max"]), 0
+    )
 
     # create color mapping:
     st.session_state["colormap"] = {
@@ -75,4 +76,3 @@ def create_sidebar():
         "Dispatchable 4": "#99c3e9",
         "Storage": "#ff2b2b",
     }
-    )

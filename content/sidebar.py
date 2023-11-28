@@ -79,3 +79,14 @@ def create_sidebar():
         "p (average)": "#99c3e9",
         "r (average)": "#c90068",
     }
+
+    st.session_state["category_orders"] = {
+        "Generator": [
+            "VRES",
+            "Dispatchable 1",
+            "Dispatchable 2",
+            "Dispatchable 3",
+            "Dispatchable 4",
+            "Storage",
+        ]
+    }

@@ -18,16 +18,7 @@ def create_figure_gen_profiles(n: pypsa.Network, res: pd.DataFrame):
         facet_col="parameter",
         color="Generator",
         y="MW",
-        category_orders={
-            "Generator": [
-                "VRES",
-                "Dispatchable 1",
-                "Dispatchable 2",
-                "Dispatchable 3",
-                "Dispatchable 4",
-                "Storage",
-            ]
-        },
+        category_orders=st.session_state["category_orders"],
         color_discrete_map=st.session_state["colormap"],
     )
 
@@ -73,6 +64,10 @@ def create_figure_gen_profiles_details(res: pd.DataFrame):
         y="MW",
         height=700,
     )
+
+    # Customize the facet row labels after creating the plot
+    for i, row_label in enumerate(fig.layout.annotations):
+        row_label.text = row_label.text.split("=")[1]
 
     # Create a list to store line plot traces
     line_traces = []

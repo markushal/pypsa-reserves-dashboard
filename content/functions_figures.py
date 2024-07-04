@@ -1,7 +1,9 @@
-import plotly.express as px
-import streamlit as st
+# -*- coding: utf-8 -*-
+"""Figures."""
 import pandas as pd
+import plotly.express as px
 import pypsa
+import streamlit as st
 
 
 def create_figure_gen_profiles(n: pypsa.Network, res: pd.DataFrame):
@@ -66,7 +68,7 @@ def create_figure_gen_profiles_details(res: pd.DataFrame):
     )
 
     # Customize the facet row labels after creating the plot
-    for i, row_label in enumerate(fig.layout.annotations):
+    for _i, row_label in enumerate(fig.layout.annotations):
         row_label.text = row_label.text.split("=")[1]
 
     # Create a list to store line plot traces
@@ -81,7 +83,7 @@ def create_figure_gen_profiles_details(res: pd.DataFrame):
             y="MW",
             color_discrete_sequence=["black"],
         ).update_traces(
-            line=dict(color="black"), name="p_max"
+            line={"color": "black"}, name="p_max"
         )  # Customize line color as needed
 
         line_traces.append(line_trace.data[0])

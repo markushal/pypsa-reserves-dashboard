@@ -1,5 +1,7 @@
-import streamlit as st
+# -*- coding: utf-8 -*-
+"""Sidebar."""
 import pandas as pd
+import streamlit as st
 
 
 # Settings:

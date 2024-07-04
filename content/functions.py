@@ -1,6 +1,8 @@
-import pypsa
-import pandas as pd
+# -*- coding: utf-8 -*-
+"""Utility functions."""
 import numpy as np
+import pandas as pd
+import pypsa
 import streamlit as st
 
 
@@ -19,10 +21,6 @@ def create_network() -> pypsa.Network:
 
     # create snapshots:
     n.set_snapshots(snapshots)
-    # effect of weightings unclear -> leave them as they are
-    # n.snapshot_weightings["objective"] = 8760 / len(n.snapshots)
-    # n.snapshot_weightings["stores"] = 8760 / len(n.snapshots)
-    # n.snapshot_weightings["generators"] = 8760 / len(n.snapshots)
     n.add("Load", name="load1", bus="bus1", carrier="Electricity", p_set=load_profile)
 
     # add dispatchable generators:
@@ -53,7 +51,7 @@ def create_network() -> pypsa.Network:
         capital_cost=st.session_state["storage_capcost"],
         p_nom_extendable=st.session_state["storage_is_extendable"],
         cyclic_state_of_charge=True,
-        max_hours=24,  # float(storage_capacity) / st.session_state["p_nom_storage"] if st.session_state["p_nom_storage"] > 0 else 1,
+        max_hours=24,
         efficiency_store=0.99,
         standing_loss=0.001,
     )
@@ -69,7 +67,6 @@ def add_balancing_constraints(
 
     - contingency (float): reserve requirement (MW)
     """
-
     # create model instance:
     n.optimize.create_model()
 
@@ -98,9 +95,7 @@ def add_balancing_constraints(
 
     # add constraint (reserve must be less than diff between p and p_nom)
     gen_i = n.generators.index
-    ext_i = n.generators.query("p_nom_extendable").index
     fix_i = n.generators.query("not p_nom_extendable").index
-    vres_i = n.generators_t.p_max_pu.columns
 
     p_max_pu = pypsa.descriptors.get_switchable_as_dense(n, "Generator", "p_max_pu")
     capacity_fixed = n.generators.p_nom[fix_i]

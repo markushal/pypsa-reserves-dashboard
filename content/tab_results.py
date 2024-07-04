@@ -1,11 +1,16 @@
-import streamlit as st
-import pypsa
+# -*- coding: utf-8 -*-
+"""Content of results tab."""
 import pandas as pd
-from content.functions_figures import create_figure_gen_profiles
-from content.functions_figures import create_figure_capacity_and_average_output
-from content.functions_figures import create_figure_gen_profiles_details
-from content.functions_figures import create_figures_storage_details
-from content.functions_figures import create_figure_prices
+import pypsa
+import streamlit as st
+
+from content.functions_figures import (
+    create_figure_capacity_and_average_output,
+    create_figure_gen_profiles,
+    create_figure_gen_profiles_details,
+    create_figure_prices,
+    create_figures_storage_details,
+)
 
 
 def create_tab_results(n: pypsa.Network, res: pd.DataFrame):

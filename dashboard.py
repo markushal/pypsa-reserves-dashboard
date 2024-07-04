@@ -1,13 +1,12 @@
+# -*- coding: utf-8 -*-
+"""Entry point for streamlit app."""
 import streamlit as st
 
+from content.functions import add_balancing_constraints, concat_results, create_network
 from content.sidebar import create_sidebar
-from content.tab_results import create_tab_results
-from content.tab_methodology import create_tab_methodology
 from content.tab_about import create_tab_about
-
-from content.functions import create_network
-from content.functions import add_balancing_constraints
-from content.functions import concat_results
+from content.tab_methodology import create_tab_methodology
+from content.tab_results import create_tab_results
 
 # app layout:
 st.set_page_config(layout="wide")

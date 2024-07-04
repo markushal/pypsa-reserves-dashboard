@@ -1,0 +1,53 @@
+default_stages: [commit]
+exclude: ^(data|archive)/
+
+repos:
+  # ============== PRE-COMMIT HOOKS ===============
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: check-added-large-files
+        args: ['--maxkb=5000'] # we need some data files and images in the repository
+      - id: check-merge-conflict
+      - id: end-of-file-fixer
+      - id: fix-encoding-pragma
+      - id: mixed-line-ending
+      - id: no-commit-to-branch
+
+  # ==================== BLACK ====================
+  - repo: https://github.com/psf/black
+    rev: 24.4.2
+    hooks:
+      - id: black
+        args: ["--line-length", "88"]
+      - id: black-jupyter
+
+  # ==================== ISORT ====================
+  - repo: https://github.com/pycqa/isort
+    rev: 5.13.2
+    hooks:
+      - id: isort
+        name: isort (python)
+        args: ["--profile", "black"]
+
+  # =================== FLAKE8 ====================
+  - repo: https://github.com/pycqa/flake8
+    rev: 7.1.0
+    hooks:
+      - id: flake8
+        additional_dependencies:
+          [
+            flake8-bandit,
+            flake8-bugbear,
+            flake8-builtins,
+            flake8-comprehensions,
+            flake8-docstrings,
+            flake8-eradicate,
+            flake8-isort            
+          ]
+        args:
+          [
+            "--max-line-length=88",
+            "--extend-ignore=E203,I001,I005,D101,D103,D105,B023,S603,S608,S101,S310,E402",
+            "--docstring-convention=numpy",
+          ]

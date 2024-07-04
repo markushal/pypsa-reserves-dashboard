@@ -2,3 +2,4 @@ pypsa
 plotly
 streamlit
 highspy
+numpy<2.0 # pypsa 0.28.0 has problems with numpy 2.0

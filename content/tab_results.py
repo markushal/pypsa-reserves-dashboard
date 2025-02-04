@@ -47,14 +47,3 @@ def create_tab_results():
     # prices profiles:
     with st.expander("Prices"):
         create_figure_prices(n)
-
-    st.divider()
-    with st.expander("Debugging output"):
-        st.markdown("Generators:")
-        st.write(n.generators)
-
-        st.markdown("Storage units:")
-        st.write(n.storage_units)
-
-        st.markdown("Session state:")
-        st.write(st.session_state)

@@ -58,6 +58,7 @@ def create_figure_capacity_and_average_output(n: pypsa.Network):
 
 def create_figure_gen_profiles_details(res: pd.DataFrame):
     st.markdown("**Generation and balancing profiles per generator**")
+    st.markdown("**Generation (``p``) and balancing (`r`) profiles per generator**")
     fig = px.bar(
         res[(res["parameter"].isin(["p", "r"]))],
         x="snapshot",

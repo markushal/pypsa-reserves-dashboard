@@ -23,17 +23,25 @@ def create_sidebar():
         ],
     )
 
-    st.sidebar.header("Settings:")
-    st.sidebar.subheader("Dispatchable generators:")
+    st.sidebar.header("Settings")
+    st.sidebar.subheader("Dispatchable generators")
     st.session_state["df_dispatchable_generators"] = st.sidebar.data_editor(df)
     st.session_state["df_dispatchable_generators"]["bus"] = "bus1"
     st.session_state["df_dispatchable_generators"]["carrier"] = "Dispatchable"
 
-    st.sidebar.subheader("Renewable generation:")
+    st.sidebar.subheader("Renewable generation")
     c1, c2 = st.sidebar.columns(2)
 
     with c2:
-        st.session_state["vres_is_extendable"] = st.toggle("VRES extendable", False)
+        st.session_state["vres_is_extendable"] = st.toggle(
+            "VRES extendable",
+            False,
+            help=(
+                "If selected, the capacity of the variable renewable energy sources "
+                "(VRES) is optimized by the model."
+                "Otherwise, the capacity is fixed to a user defined value."
+            ),
+        )
     with c1:
         if st.session_state["vres_is_extendable"]:
             st.session_state["vres_capcost"] = st.slider(
@@ -44,12 +52,18 @@ def create_sidebar():
             st.session_state["vres_capcost"] = 0
             st.session_state["p_nom_vres"] = st.slider("VRES capacity (MW):", 0, 60, 0)
 
-    st.sidebar.subheader("Storage:")
+    st.sidebar.subheader("Storage")
     c1, c2 = st.sidebar.columns(2)
 
     with c2:
         st.session_state["storage_is_extendable"] = st.toggle(
-            "Storage extendable", False
+            "Storage extendable",
+            False,
+            help=(
+                "If selected, the capacity of the storage unit is optimized by the "
+                "model."
+                "Otherwise, the capacity is fixed to a user defined value."
+            ),
         )
     with c1:
         if st.session_state["storage_is_extendable"]:
@@ -63,8 +77,10 @@ def create_sidebar():
                 "Storage capacity (MW):", 0, 60, 0
             )
 
-    st.sidebar.subheader("Demand:")
+    st.sidebar.subheader("Demand")
     st.session_state["load_max"] = st.sidebar.slider("Peak load (MW):", 1, 60, 30)
+
+    st.sidebar.subheader("Reserve")
     st.session_state["contingency"] = st.sidebar.slider(
         "reserve requirement (MW):", 0, int(0.5 * st.session_state["load_max"]), 0
     )

@@ -12,7 +12,6 @@ title = "PyPSA reserves dashboard"
 st.set_page_config(page_title=title, layout="wide")
 st.title(title)
 
-st.sidebar.header("Navigation")
 page = st.navigation(
     [
         st.Page(create_tab_results, title="Dashboard", url_path="dashboard"),

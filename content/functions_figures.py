@@ -116,8 +116,8 @@ def create_figures_storage_details(n: pypsa.Network):
 
 def create_figure_prices(n: pypsa.Network):
     res_duals = pd.DataFrame(index=n.snapshots)
-    res_duals["p"] = n.model.dual["Bus-nodal_balance"]
-    res_duals["r"] = n.model.dual["reserve_margin"]
+    res_duals["p"] = n.model.dual["Bus-nodal_balance"].squeeze().to_series()
+    res_duals["r"] = n.model.dual["reserve_margin"].squeeze().to_series()
     fig = px.line(res_duals)
     st.plotly_chart(fig, use_container_width=True)
     return

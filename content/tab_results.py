@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """Content of results tab."""
-import pandas as pd
-import pypsa
+
 import streamlit as st
 
+from content.functions import add_balancing_constraints, concat_results, create_network
 from content.functions_figures import (
     create_figure_capacity_and_average_output,
     create_figure_gen_profiles,
@@ -13,7 +13,19 @@ from content.functions_figures import (
 )
 
 
-def create_tab_results(n: pypsa.Network, res: pd.DataFrame):
+def create_tab_results():
+    # create network:
+    n = create_network()
+
+    # add balancing constraints:
+    add_balancing_constraints(n, st.session_state["contingency"])
+
+    # solve model:
+    n.optimize.solve_model(solver_name="highs", assign_all_duals=True)
+
+    # concatenate different profiles to one dataframe:
+    res = concat_results(n)
+
     col1, col2 = st.columns(2)
 
     # Create a figure based on the dataframe
